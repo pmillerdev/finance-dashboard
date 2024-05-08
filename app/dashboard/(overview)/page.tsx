@@ -9,7 +9,7 @@ import {
   RevenueChartSkeleton,
 } from '@/app/ui/skeletons';
 
-const DashboardPage = async () => (
+const DashboardPage = () => (
   <main>
     <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
       Dashboard
