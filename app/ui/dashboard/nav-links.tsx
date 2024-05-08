@@ -8,8 +8,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
@@ -20,7 +18,7 @@ const links = [
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
 ];
 
-export default function NavLinks() {
+const NavLinks = () => {
   const pathname = usePathname();
   return (
     <>
@@ -44,4 +42,6 @@ export default function NavLinks() {
       })}
     </>
   );
-}
+};
+
+export default NavLinks;

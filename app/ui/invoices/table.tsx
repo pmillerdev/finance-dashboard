@@ -1,16 +1,19 @@
 import Image from 'next/image';
-import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
+import {
+  UpdateInvoiceButton,
+  DeleteInvoiceButton,
+} from '@/app/ui/invoices/buttons';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/data';
+import { memo } from 'react';
 
-export default async function InvoicesTable({
-  query,
-  currentPage,
-}: {
+type InvoicesTableProps = {
   query: string;
   currentPage: number;
-}) {
+};
+
+const InvoicesTable = async ({ query, currentPage }: InvoicesTableProps) => {
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
   return (
@@ -47,8 +50,8 @@ export default async function InvoicesTable({
                     <p>{formatDateToLocal(invoice.date)}</p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <UpdateInvoice id={invoice.id} />
-                    <DeleteInvoice id={invoice.id} />
+                    <UpdateInvoiceButton id={invoice.id} />
+                    <DeleteInvoiceButton id={invoice.id} />
                   </div>
                 </div>
               </div>
@@ -109,8 +112,8 @@ export default async function InvoicesTable({
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateInvoice id={invoice.id} />
-                      <DeleteInvoice id={invoice.id} />
+                      <UpdateInvoiceButton id={invoice.id} />
+                      <DeleteInvoiceButton id={invoice.id} />
                     </div>
                   </td>
                 </tr>
@@ -121,4 +124,6 @@ export default async function InvoicesTable({
       </div>
     </div>
   );
-}
+};
+
+export default memo(InvoicesTable);

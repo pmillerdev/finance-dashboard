@@ -4,12 +4,19 @@ import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
+import { memo } from 'react';
 
 export const metadata: Metadata = {
   title: 'Edit Invoice',
 };
 
-export default async function Page({ params }: { params: { id: string } }) {
+type EditInvoicePageProps = {
+  params: {
+    id: string;
+  };
+};
+
+const EditInvoicePage = async ({ params }: EditInvoicePageProps) => {
   const id = params.id;
   const [invoice, customers] = await Promise.all([
     fetchInvoiceById(id),
@@ -35,4 +42,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Form invoice={invoice} customers={customers} />
     </main>
   );
-}
+};
+
+export default memo(EditInvoicePage);

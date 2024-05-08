@@ -1,16 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
-export default function Error({
-  error,
-  reset,
-}: {
+type ErrorPageProps = {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+};
+
+const ErrorPage = ({ error, reset }: ErrorPageProps) => {
   useEffect(() => {
-    // Optionally log the error to an error reporting service
+    // log the error to the console
     console.error(error);
   }, [error]);
 
@@ -28,4 +27,6 @@ export default function Error({
       </button>
     </main>
   );
-}
+};
+
+export default memo(ErrorPage);

@@ -7,11 +7,21 @@ import {
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 
-export default function LoginForm() {
+const LoginButton = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button className="mt-4 w-full" aria-disabled={pending}>
+      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+    </Button>
+  );
+};
+
+const LoginForm = () => {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
@@ -61,6 +71,10 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
+        <p className="mt-4 text-sm">
+          Please use the email <strong>user@nextmail.com</strong> and password{' '}
+          <strong>123456</strong> to log in.
+        </p>
         <LoginButton />
         <div
           className="flex h-8 items-end space-x-1"
@@ -77,14 +91,6 @@ export default function LoginForm() {
       </div>
     </form>
   );
-}
+};
 
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button className="mt-4 w-full" aria-disabled={pending}>
-      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-    </Button>
-  );
-}
+export default LoginForm;

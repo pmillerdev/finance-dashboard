@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { CustomersTableType } from '@/app/lib/definitions';
 import { fetchFilteredCustomers } from '@/app/lib/data';
+import { memo } from 'react';
 
-export default async function CustomersTable({
-  query,
-  currentPage,
-}: {
+type CustomerTableProps = {
   query: string;
   currentPage: number;
-}) {
+};
+
+const CustomersTable = async ({ query, currentPage }: CustomerTableProps) => {
   const customers: CustomersTableType[] = await fetchFilteredCustomers(
     query,
     currentPage,
@@ -115,4 +115,6 @@ export default async function CustomersTable({
       </div>
     </div>
   );
-}
+};
+
+export default memo(CustomersTable);

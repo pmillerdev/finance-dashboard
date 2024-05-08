@@ -2,7 +2,7 @@ import Pagination from '@/app/ui/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/customers/table';
 import { lusitana } from '@/app/ui/fonts';
-import { Suspense } from 'react';
+import { Suspense, memo } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { fetchCustomersPages } from '@/app/lib/data';
 import { Metadata } from 'next';
@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   title: 'Customers',
 };
 
-export default async function Page({
-  searchParams,
-}: {
+type CustomersPageProps = {
   searchParams?: {
     query?: string;
     page?: string;
   };
-}) {
+};
+
+const CustomersPage = async ({ searchParams }: CustomersPageProps) => {
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -40,4 +40,6 @@ export default async function Page({
       </div>
     </div>
   );
-}
+};
+
+export default memo(CustomersPage);

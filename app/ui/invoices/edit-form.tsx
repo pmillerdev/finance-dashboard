@@ -8,16 +8,16 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import { useFormState } from 'react-dom';
+import { memo } from 'react';
 
-export default function EditInvoiceForm({
-  invoice,
-  customers,
-}: {
+type EditInvoiceFormProps = {
   invoice: InvoiceForm;
   customers: CustomerField[];
-}) {
+};
+
+const EditInvoiceForm = ({ invoice, customers }: EditInvoiceFormProps) => {
   const initialState = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
   const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
@@ -154,8 +154,10 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <Button type="submit">Save</Button>
       </div>
     </form>
   );
-}
+};
+
+export default memo(EditInvoiceForm);

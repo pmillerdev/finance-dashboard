@@ -32,7 +32,7 @@ export type ErrorState = {
   message?: string | null;
 };
 
-export async function createInvoice(prevState: ErrorState, formData: FormData) {
+export async function createInvoice(_prevState: ErrorState, formData: FormData) {
   const validatedFields = CreateInvoice.safeParse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
@@ -69,7 +69,7 @@ const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function updateInvoice(
   id: string,
-  prevState: ErrorState,
+  _prevState: ErrorState,
   formData: FormData,
 ) {
   const validatedFields = UpdateInvoice.safeParse({
@@ -118,7 +118,7 @@ export async function deleteInvoice(id: string) {
 }
 
 export async function authenticate(
-  prevState: string | undefined,
+  _prevState: string | undefined,
   formData: FormData,
 ) {
   try {

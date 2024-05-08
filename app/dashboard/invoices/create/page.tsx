@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Create Invoice',
 };
 
-export default async function Page() {
+const CreateInvoicePage = async () => {
   const customers = await fetchCustomers();
 
   return (
@@ -25,4 +25,6 @@ export default async function Page() {
       <Form customers={customers} />
     </main>
   );
-}
+};
+
+export default CreateInvoicePage;
