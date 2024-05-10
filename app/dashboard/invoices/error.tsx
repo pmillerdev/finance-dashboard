@@ -1,15 +1,10 @@
 'use client';
 
+import { ErrorPageProps } from '@/app/types/common';
 import { memo, useEffect } from 'react';
-
-type ErrorPageProps = {
-  error: Error & { digest?: string };
-  reset: () => void;
-};
 
 const ErrorPage = ({ error, reset }: ErrorPageProps) => {
   useEffect(() => {
-    // log the error to the console
     console.error(error);
   }, [error]);
 

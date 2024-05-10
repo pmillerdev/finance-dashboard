@@ -6,18 +6,13 @@ import {
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { memo } from 'react';
+import { CardProps } from '@/app/types/common';
 
 const iconMap = {
   collected: BanknotesIcon,
   customers: UserGroupIcon,
   pending: ClockIcon,
   invoices: InboxIcon,
-};
-
-type CardProps = {
-  title: string;
-  value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
 };
 
 const Card = ({ title, value, type }: CardProps) => {

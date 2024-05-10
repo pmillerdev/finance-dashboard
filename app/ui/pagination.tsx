@@ -6,23 +6,11 @@ import Link from 'next/link';
 import { generatePagination } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { memo } from 'react';
-
-type PaginationNumberProps = {
-  page: number | string;
-  href: string;
-  position?: 'first' | 'last' | 'middle' | 'single';
-  isActive: boolean;
-};
-
-type PaginationArrowProps = {
-  href: string;
-  direction: 'left' | 'right';
-  isDisabled?: boolean;
-};
-
-type PaginationProps = {
-  totalPages: number;
-};
+import {
+  PaginationArrowProps,
+  PaginationNumberProps,
+  PaginationProps,
+} from '../types/common';
 
 const PaginationNumber = ({
   page,

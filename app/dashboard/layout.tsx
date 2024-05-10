@@ -1,9 +1,6 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
-import { ReactNode, memo } from 'react';
-
-type LayoutProps = {
-  children: ReactNode;
-};
+import { memo } from 'react';
+import { LayoutProps } from '../types/common';
 
 const Layout = ({ children }: LayoutProps) => (
   <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">

@@ -5,15 +5,10 @@ import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
 import { memo } from 'react';
+import { EditInvoicePageProps } from '@/app/types/invoices';
 
 export const metadata: Metadata = {
   title: 'Edit Invoice',
-};
-
-type EditInvoicePageProps = {
-  params: {
-    id: string;
-  };
 };
 
 const EditInvoicePage = async ({ params }: EditInvoicePageProps) => {

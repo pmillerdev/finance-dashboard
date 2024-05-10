@@ -2,16 +2,7 @@ import { clsx } from 'clsx';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import { memo } from 'react';
-
-type Breadcrumb = {
-  label: string;
-  href: string;
-  active?: boolean;
-};
-
-type BreadcrumbsProps = {
-  breadcrumbs: Breadcrumb[];
-};
+import { BreadcrumbsProps } from '@/app/types/common';
 
 const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => (
   <nav aria-label="Breadcrumb" className="mb-6 block">

@@ -1,5 +1,4 @@
 'use client';
-import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import {
   CheckIcon,
@@ -11,10 +10,7 @@ import Button from '@/app/ui/button';
 import { createInvoice } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 import { memo } from 'react';
-
-type CreateInvoiceFormProps = {
-  customers: CustomerField[];
-};
+import { CreateInvoiceFormProps } from '@/app/types/invoices';
 
 const CreateInvoiceForm = ({ customers }: CreateInvoiceFormProps) => {
   const initialState = { message: null, errors: {} };

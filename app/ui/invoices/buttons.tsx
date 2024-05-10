@@ -1,10 +1,7 @@
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { deleteInvoice } from '@/app/lib/actions';
-
-type ButtonProps = {
-  id: string;
-};
+import { InvoiceButtonProps } from '@/app/types/invoices';
 
 const CreateInvoiceButton = () => (
   <Link
@@ -16,7 +13,7 @@ const CreateInvoiceButton = () => (
   </Link>
 );
 
-const UpdateInvoiceButton = ({ id }: ButtonProps) => (
+const UpdateInvoiceButton = ({ id }: InvoiceButtonProps) => (
   <Link
     href={`/dashboard/invoices/${id}/edit`}
     className="rounded-md border p-2 hover:bg-gray-100"
@@ -25,7 +22,7 @@ const UpdateInvoiceButton = ({ id }: ButtonProps) => (
   </Link>
 );
 
-const DeleteInvoiceButton = ({ id }: ButtonProps) => {
+const DeleteInvoiceButton = ({ id }: InvoiceButtonProps) => {
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
 
   return (

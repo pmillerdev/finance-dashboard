@@ -7,16 +7,10 @@ import { Suspense, memo } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { fetchInvoicesPages } from '@/app/lib/data';
 import { Metadata } from 'next';
+import { InvoicesPageProps } from '@/app/types/invoices';
 
 export const metadata: Metadata = {
   title: 'Invoices',
-};
-
-type InvoicesPageProps = {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
 };
 
 const InvoicesPage = async ({ searchParams }: InvoicesPageProps) => {

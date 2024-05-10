@@ -1,15 +1,15 @@
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore } from 'next/cache';
+
+import { formatCurrency } from './utils';
 import {
-  CustomerField,
-  CustomersTableType,
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
-  User,
   Revenue,
-} from './definitions';
-import { formatCurrency } from './utils';
+} from '../types/invoices';
+import { CustomerField, CustomersTableType } from '../types/customers';
+import { User } from '../types/user';
 
 export async function fetchRevenue() {
   noStore();
@@ -46,9 +46,6 @@ export async function fetchLatestInvoices() {
 export async function fetchCardData() {
   noStore();
   try {
-    // You can probably combine these into a single SQL query
-    // However, we are intentionally splitting them to demonstrate
-    // how to initialize multiple queries in parallel with JS.
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     const invoiceStatusPromise = sql`SELECT
@@ -226,7 +223,7 @@ export async function fetchFilteredCustomers(
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
 	  `;
 
-    const customers = data.rows.map((customer) => ({
+    const customers: CustomersTableType[] = data.rows.map((customer) => ({
       ...customer,
       total_pending: formatCurrency(customer.total_pending),
       total_paid: formatCurrency(customer.total_paid),

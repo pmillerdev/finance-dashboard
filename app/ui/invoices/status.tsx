@@ -1,10 +1,7 @@
+import { InvoiceStatusProps } from '@/app/types/invoices';
 import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { memo } from 'react';
-
-type InvoiceStatusProps = {
-  status: string;
-};
 
 const InvoiceStatus = ({ status }: InvoiceStatusProps) => (
   <span

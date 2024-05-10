@@ -1,7 +1,7 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
-import { ReactNode } from 'react';
+import { LayoutProps } from './types/common';
 
 export const metadata: Metadata = {
   title: {
@@ -12,11 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://finance-dashboard-delta.vercel.app/'),
 };
 
-type RootLayoutProps = {
-  children: ReactNode;
-};
-
-const RootLayout = ({ children }: RootLayoutProps) => (
+const RootLayout = ({ children }: LayoutProps) => (
   <html lang="en">
     <body className={`${inter.className} antialiased`}>{children}</body>
   </html>

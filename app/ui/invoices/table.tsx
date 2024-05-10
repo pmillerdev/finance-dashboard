@@ -7,11 +7,7 @@ import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/data';
 import { memo } from 'react';
-
-type InvoicesTableProps = {
-  query: string;
-  currentPage: number;
-};
+import { InvoicesTableProps } from '@/app/types/invoices';
 
 const InvoicesTable = async ({ query, currentPage }: InvoicesTableProps) => {
   const invoices = await fetchFilteredInvoices(query, currentPage);

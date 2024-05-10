@@ -1,18 +1,10 @@
 import Image from 'next/image';
-import { CustomersTableType } from '@/app/lib/definitions';
 import { fetchFilteredCustomers } from '@/app/lib/data';
 import { memo } from 'react';
-
-type CustomerTableProps = {
-  query: string;
-  currentPage: number;
-};
+import { CustomerTableProps } from '@/app/types/customers';
 
 const CustomersTable = async ({ query, currentPage }: CustomerTableProps) => {
-  const customers: CustomersTableType[] = await fetchFilteredCustomers(
-    query,
-    currentPage,
-  );
+  const customers = await fetchFilteredCustomers(query, currentPage);
 
   return (
     <div className="mt-6 flow-root">

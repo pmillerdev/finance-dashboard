@@ -1,6 +1,5 @@
 'use client';
 import { updateInvoice } from '@/app/lib/actions';
-import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
 import {
   CheckIcon,
   ClockIcon,
@@ -11,11 +10,7 @@ import Link from 'next/link';
 import Button from '@/app/ui/button';
 import { useFormState } from 'react-dom';
 import { memo } from 'react';
-
-type EditInvoiceFormProps = {
-  invoice: InvoiceForm;
-  customers: CustomerField[];
-};
+import { EditInvoiceFormProps } from '@/app/types/invoices';
 
 const EditInvoiceForm = ({ invoice, customers }: EditInvoiceFormProps) => {
   const initialState = { message: null, errors: {} };
